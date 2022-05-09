@@ -1,6 +1,9 @@
 function [area] = find_area(contour)
 
 area = 0; 
+if ~std(contour)
+    return
+end
 for i = 1:length(contour)-1
 
     if i <= length(contour)/2
@@ -18,6 +21,7 @@ for i = 1:length(contour)-1
     c = sqrt(line3(i,1)^2+line3(i,2)^2);
 
     s = (a+b+c)/2; 
-    area = area + sqrt(s*(s-a)*(s-b)*(s-c)); 
+    area = area + sqrt(abs(s*(s-a)*(s-b)*(s-c))); 
 
+end
 end
